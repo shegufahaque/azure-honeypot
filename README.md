@@ -110,6 +110,8 @@ WindowsEvents
 | project TimeGenerated, Computer, AttackerIp = IpAddress, cityname, countryname, latitude, longitude
 ```
 
+![KQL Query Result](screenshots/KQL_Queries_with_result.png)
+
 **What each part does:**
 - `_GetWatchlist("geoip")` — loads the uploaded GeoIP watchlist containing IP-to-location mappings
 - `EventID == 4625` — filters for failed logon attempts only
