@@ -9,11 +9,10 @@
 
 ## 📌 Project Summary / Introduction
 
-This project demonstrates a real-world honeypot deployment on Microsoft Azure designed to attract, capture, and analyze brute-force login activity from across the globe. By intentionally exposing a Windows 11 Virtual Machine to the public internet — with all firewall protections disabled and inbound traffic fully open — the experiment simulates an unsecured system to observe how quickly and aggressively threat actors discover and target exposed endpoints.
+Deployed a deliberately exposed Windows 11 VM on Microsoft Azure to attract and analyze real-world brute-force activity. Integrated Microsoft Sentinel as the SIEM, used KQL for log analysis and geolocation enrichment, and built an interactive attack map workbook to visualize global attacker origins. Simulates a core SOC analyst workflow end-to-end: log ingestion → detection → investigation → visualization. **35,000+ failed logon attempts 
+recorded in under 20 hours.**
 
-Within approximately **20 hours** of deployment, the honeypot logged over **35,000 failed logon attempts** originating from multiple countries. The collected data was analyzed using **Microsoft Sentinel** as the SIEM platform and **KQL (Kusto Query Language)** for log queries, enriched with geolocation data, and visualized through a custom **Azure Workbook attack map**.
-
-This project simulates a core SOC (Security Operations Center) analyst workflow: log ingestion → threat detection → investigation → visualization.
+![Attack Map](screenshots/Attack_map.png)
 
 ---
 
@@ -89,8 +88,6 @@ A **Log Analytics Workspace** (`LAW-SOC5Lab-5`) was created and linked to **Micr
 A **GeoIP watchlist** (named `geoip`) was uploaded into Microsoft Sentinel, containing a mapping of IP address ranges to city, country, latitude, and longitude data.
 
 Using KQL, Windows Security Event logs were enriched with geolocation information by joining failed logon events against the GeoIP watchlist. The enriched data was then used to build a custom **Azure Workbook** (`Windows VM Attack Map 2`) that renders attacker IPs as geographically plotted markers on a world map.
-
-![Attack Map](screenshots/Attack_map.png)
 
 ---
 
